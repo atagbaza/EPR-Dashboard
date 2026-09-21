@@ -1,0 +1,39 @@
+{
+  "_readme": "Template matching SCHEMA.md. Replace the single example row in each array. Dates YYYY-MM-DD.",
+
+  "calendar": [
+    { "date": "2026-09-09", "time": "09:30", "title": "", "meta": "", "cadence": "Weekly", "kind": "statutory", "hub": "", "open_to_all": "no" }
+  ],
+
+  "documents": [
+    { "title": "", "type": "Report", "origin": "Drafted by PAMS", "due": "2026-09-12", "status": "Drafting", "link": "", "path": "" }
+  ],
+
+  "missions": [
+    { "place": "", "start": "2026-09-21", "end": "2026-09-24", "purpose": "", "tr_approved": "yes", "report_submitted": "no", "claim_submitted": "no" }
+  ],
+
+  "conferences": [
+    { "title": "", "start": "2026-11-18", "end": "2026-11-18", "role": "Panellist", "confirmed": "no", "abstract_sent": "no", "slides_ready": "no", "brief_read": "no" }
+  ],
+
+  "memos": [
+    { "origin": "CO", "title": "", "meta": "", "date": "2026-09-08", "link": "" }
+  ],
+
+  "inbox_rules": {
+    "categories": ["Invitation to conference", "Document to review", "Decision to make", "Needs response", "For information"],
+    "urgency_rules": [""],
+    "reminder_lead": "1 day before"
+  },
+
+  "hubs": [
+    { "hub": "Nairobi", "lead_text": "", "activities": [
+      { "activity_title": "", "activity_meta": "", "due": "2026-09-18", "status": "Drafting" }
+    ] }
+  ],
+
+  "directory": [
+    { "name": "", "role": "", "hub": "", "mutual_access": "yes" }
+  ]
+}
