@@ -96,6 +96,44 @@ Not a table — a short list from RED:
 
 ---
 
+## 9. Dashboard extras (`data.json` only)
+
+These keys sit alongside the sections above in `data.json`. They hold content the dashboard needs that the schema does not cover yet. Every key is optional; leave one out and its panel shows empty.
+
+### Fields added to the sections above
+
+| Section | Extra field | Values / example |
+| --- | --- | --- |
+| Calendar | `id` | `c1` — any unique text |
+| Calendar | `duration` | minutes, e.g. `90` (default 60) |
+| Documents, memos | `topic` | `q3` — links items that are about the same thing (see `topics`) |
+| Missions, conferences | `id` | `isl` — any unique text |
+| Memos | `action` | `sign` (needs your signature or clearance) or `read` |
+| Hubs | `open_missions`, `missions_note` | `3`, `2 awaiting expense claims` |
+| Hubs | `meetings_this_week`, `meetings_note` | `6`, `2 open to other hubs` |
+| Hubs | `extra_stat` | `{ "label": "Graded emergencies", "value": 2, "unit": "active", "note": "Cholera" }` |
+| Hubs | `people` | `[{ "name": "Hub lead", "role": "Missions and surge" }]` |
+| Hubs | `pending` | Text shown while the hub calendar is awaited |
+| Hub activities | `due` | a date, or `today` |
+
+### New keys
+
+| Key | What it holds |
+| --- | --- |
+| `owner` | Name shown in the greeting, e.g. `RED` |
+| `recurring` | Statutory series: `weekday` (`Tuesday`), `week` (`every`, `1`–`4` or `last`), `time`, `duration`, `title`, `meta`, `cadence`, `kind` |
+| `mails` | Inbox until the mailbox is connected: `id`, `topic`, `short`, `category` (one of the triage categories), `action`, `urgent`, `subject`, `sender`, `received` (date-time) or `received_hours_ago`, `responded`, `summary`, `attachment` |
+| `requests` | Ad-hoc asks: `id`, `topic`, `from`, `title`, `urgency` (`Today`, `This week`, `No date`), `received` or `received_hours_ago` |
+| `todos` | Daily to-do: `id`, `topic`, `text`, `kind`, `due` (date-time) or `due_in_hours`, `done` |
+| `topics` | `{ "q3": "Q3 performance report — clear section 4" }` — the title shown when several items share a topic |
+| `shared_files` | `title`, `owner`, `updated` (date), `scope` |
+| `setup` | Setup checklist: `name`, `status` (`Awaiting`, `Partial`, `Setup session`, `Confirmed`), `need` (`{owner}` is replaced by the owner's name), `target` |
+| `monthly_report` | `stats` (`value`, `label`) and `sections` (`title`, `page`, `lines`) until the activity log arrives |
+
+`received_hours_ago` and `due_in_hours` place sample items relative to the moment the page opens, so a demo stays current. Real exports should use `received` / `due` date-times such as `2026-09-23T14:00`.
+
+---
+
 ## Easiest way to send it
 
 1. One Excel workbook, one tab per section above, headers exactly as written — **or**
