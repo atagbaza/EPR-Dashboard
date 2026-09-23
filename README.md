@@ -20,19 +20,20 @@ Once GitHub Pages is enabled (see below), the live dashboard is at:
 | File | What it is |
 | --- | --- |
 | `index.html` | The dashboard, fully self-contained — works offline, no build step, no dependencies |
-| `source/EPR Command Dashboard v3 WHO blue.dc.html` | Editable source the dashboard is compiled from (WHO blue palette) |
-| `source/support.js` | Runtime the source file loads when opened locally |
+| `EPR Command Dashboard v3 WHO blue.dc.html` | Editable source the dashboard is compiled from (WHO blue palette) |
+| `support.js` | Runtime the source file loads when opened locally |
 | `DATA-NEEDED.md` | The outstanding inputs and exactly where each one lands in the dashboard |
 | `SCHEMA.md` | The exact fields to send for each section — share this with anyone supplying data |
 | `data.json` | All dashboard content — the one file to edit |
 | `data.template.json` | Blank template matching the schema, ready to fill in |
 | `build.py` | Rebuilds `index.html` from the source and `data.json` |
+| `.github/workflows/build.yml` | Runs `build.py` automatically on GitHub after every commit to the source or `data.json` |
 
 ## Collaborating
 
 - **Reviewing and commenting** — open an Issue, or comment on a line of `index.html` in a pull request.
 - **Content changes** (calendars, activities, document titles, missions, inbox) — edit `data.json`, following [SCHEMA.md](SCHEMA.md), then run `python3 build.py`. The build copies `data.json` into the source and into `index.html`, so the page still works offline. When the dashboard is served over the web (GitHub Pages), it also fetches `data.json` on load, so an updated file shows up without a rebuild.
-- **Re-compiling** — `index.html` is generated from the source file. Do not hand-edit it; edits there are lost on the next build. Run `python3 build.py` after any change to the source or to `data.json` (no dependencies needed).
+- **Re-compiling** — `index.html` is generated from the source file. Do not hand-edit it; edits there are lost on the next build. You don't need to run anything: committing a change to the source, `data.json` or `build.py` triggers the **Rebuild dashboard** action, which rebuilds and commits `index.html` within a minute or two (see the **Actions** tab). To build locally instead, run `python3 build.py` (no dependencies needed).
 - **Saved state** — ticked tasks, mission steps, reminders and items added to the to-do list are kept in the browser (`localStorage`), per browser and per device.
 - **Styling** — colours, spacing, radii and type sizes are CSS variables at the top of the source file's `<style>` block. Change a token there rather than adding a colour to the markup or script.
 
